@@ -27,9 +27,9 @@ An opinionated AWS account setup with only options to adjust cost impacting sett
     
     ```hcl-terraform
     terraform {
-      backend s3 {
-        bucket         = "tfstate-667713841636-us-east-1"
-        key            = "daringway-infrastructure/terraform/dev/infrastructure.tfstate"
+      backend s3 {                
+        bucket         = "tfstate-01234567890-us-east-1"
+        key            = "repo-name/dev/infrastructure.tfstate"
         region         = "us-east-1"
         dynamodb_table = "terraform-lock"
       }

@@ -1,5 +1,8 @@
-# terraform-aws-account-setup
+# Terraform AWS Account Setup Module
 An opinionated AWS account setup with only options to adjust cost impacting setting.
+
+NOTE: This is currently under develop and should not be considered a complete
+ setup while the version is 0.0.x 
 
 # Quickstart Guide
 

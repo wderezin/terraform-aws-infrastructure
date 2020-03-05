@@ -1,4 +1,5 @@
 
+// The tfstate in the primary region is created in modules/bootstrap
 resource aws_s3_bucket state {
   count = local.is_secondary_count
 
@@ -26,7 +27,7 @@ resource aws_s3_bucket_public_access_block state {
 
 resource aws_s3_bucket config {
   bucket        = "configs-${data.aws_caller_identity.current.account_id}-${data.aws_region.current.name}"
-  force_destroy = true
+  force_destroy = local.force_destroy
   region        = data.aws_region.current.name
 
   versioning {

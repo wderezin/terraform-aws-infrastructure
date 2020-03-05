@@ -1,3 +1,4 @@
+// These resources are only created in the primary region
 
 resource aws_cloudtrail default {
   count      = local.is_primary_count

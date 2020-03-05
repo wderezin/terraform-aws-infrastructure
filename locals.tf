@@ -2,14 +2,14 @@
 locals {
   tags = merge({
     managed_by = "terraform"
-  },
-  var.tags
+    },
+    var.tags
   )
 
-  is_primary = terraform.workspace == "default"
+  is_primary     = terraform.workspace == "default"
   current_region = local.is_primary ? var.default_region : terraform.workspace
 
-  is_primary_count = local.is_primary ? 1 : 0
+  is_primary_count   = local.is_primary ? 1 : 0
   is_secondary_count = local.is_primary ? 0 : 1
 
   force_destroy = var.force_destroy

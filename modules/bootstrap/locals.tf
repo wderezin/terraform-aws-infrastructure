@@ -4,8 +4,8 @@ locals {
 
   tags = merge({
     managed_by = "terraform"
-  },
-  var.tags
+    },
+    var.tags
   )
 
   force_destroy = var.force_destroy

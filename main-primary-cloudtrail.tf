@@ -1,16 +1,16 @@
 
 resource aws_cloudtrail default {
-  count = local.is_primary_count
+  count      = local.is_primary_count
   depends_on = [aws_s3_bucket_policy.log_policy_attachment[0]]
 
-  name = "DefaultTrail"
+  name                          = "DefaultTrail"
   include_global_service_events = true
   is_multi_region_trail         = true
 
-  s3_bucket_name = aws_s3_bucket.logs[0].id
+  s3_bucket_name             = aws_s3_bucket.logs[0].id
   enable_log_file_validation = true
 
-  cloud_watch_logs_role_arn = aws_iam_role.cloudtrail_cloudwatch[0].arn
+  cloud_watch_logs_role_arn  = aws_iam_role.cloudtrail_cloudwatch[0].arn
   cloud_watch_logs_group_arn = aws_cloudwatch_log_group.cloudtrail[0].arn
 }
 
@@ -34,7 +34,7 @@ resource aws_iam_role cloudtrail_cloudwatch {
   name               = local.cloudwatch_role_name
   path               = local.role_path
   assume_role_policy = data.aws_iam_policy_document.cloudtrail_assume_role[0].json
-  description = "Allows CloudTrail to send logs to Cloudwatch"
+  description        = "Allows CloudTrail to send logs to Cloudwatch"
 
   tags = local.tags
 }
@@ -52,7 +52,7 @@ data aws_iam_policy_document cloudtrail_cloudwatch_logs {
   count = local.is_primary_count
 
   statement {
-    sid = "WriteCloudWatchLogs"
+    sid    = "WriteCloudWatchLogs"
     effect = "Allow"
     actions = [
       "logs:CreateLogStream",

@@ -1,7 +1,8 @@
 
 locals {
   tags = merge({
-    managed_by = "terraform"
+    managed_by  = "terraform",
+    environment = var.environment
     },
     var.tags
   )
@@ -19,4 +20,10 @@ locals {
   cloudwatch_retention_days = var.cloudtrail_cloudtrail_retention_days
 
   role_path = "/service-role/"
+
+  instance_profile_name = "default-ec2"
+  is_instance_profile_count = local.is_primary && var.create_default_instance_profile ? 1 : 0
+
+  account_dns_zone_name = var.account_dns_zone_name
+  create_dns_zone_count = var.account_dns_zone_name == null ? 0 : 1
 }

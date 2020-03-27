@@ -9,3 +9,13 @@ variable default_region {
   type        = string
   description = "Your default region where global resources are created."
 }
+
+variable environment {
+  type = string
+  description = "Environment name such as dev, stage, qa, prod"
+}
+
+variable account_dns_zone_name {
+  type = string
+  description = "Override the default public DNS Zone Name for the AWS account, set to null to disable"
+}

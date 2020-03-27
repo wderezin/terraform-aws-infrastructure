@@ -25,5 +25,4 @@ locals {
   is_instance_profile_count = local.is_primary && var.create_default_instance_profile ? 1 : 0
 
   account_dns_zone_name = var.account_dns_zone_name
-  create_dns_zone_count = var.account_dns_zone_name == null ? 0 : 1
 }

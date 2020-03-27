@@ -17,5 +17,5 @@ variable environment {
 
 variable account_dns_zone_name {
   type = string
-  description = "Override the default public DNS Zone Name for the AWS account, set to null to disable"
+  description = "Override the default public DNS Zone Name for the AWS account"
 }

@@ -12,14 +12,14 @@ variable force_destroy {
 }
 
 variable manage_default_security_group {
-  type = bool
-  default = true
+  type        = bool
+  default     = true
   description = "Managed the default security group in the default VPC"
 }
 
 variable create_default_instance_profile {
-  type = bool
-  default = true
+  type        = bool
+  default     = true
   description = "Create an Instance Profile for basic functionality"
 }
 

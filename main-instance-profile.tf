@@ -1,5 +1,5 @@
 resource aws_iam_instance_profile ec2_profile {
-  count = local.is_instance_profile_count
+  count = local.create_instance_profile_count
 
   name = "${local.instance_profile_name}-profile"
   role = aws_iam_role.ec2_role[0].name
@@ -18,29 +18,29 @@ data aws_iam_policy_document ec2_assume_policy_document {
 }
 
 resource aws_iam_role ec2_role {
-  count = local.is_instance_profile_count
+  count = local.create_instance_profile_count
 
   name               = "${local.instance_profile_name}-role"
   path               = "/"
   assume_role_policy = data.aws_iam_policy_document.ec2_assume_policy_document.json
-  tags = local.tags
+  tags               = local.tags
 }
 
 data aws_iam_policy_document ec2_access_policy_document {
   version = "2012-10-17"
-//
-//  statement {
-//    effect = "Allow"
-//    actions = [
-//      "s3:list*",
-//      "s3:put*",
-//      "s3:get*"
-//    ]
-//    resources = [
-//      aws_s3_bucket.default.arn,
-//      "${aws_s3_bucket.default.arn}/*"
-//    ]
-//  }
+  //
+  //  statement {
+  //    effect = "Allow"
+  //    actions = [
+  //      "s3:list*",
+  //      "s3:put*",
+  //      "s3:get*"
+  //    ]
+  //    resources = [
+  //      aws_s3_bucket.default.arn,
+  //      "${aws_s3_bucket.default.arn}/*"
+  //    ]
+  //  }
 
   statement {
     effect = "Allow"
@@ -71,7 +71,7 @@ data aws_iam_policy_document ec2_access_policy_document {
 }
 
 resource aws_iam_role_policy ec2_access_policy {
-  count = local.is_instance_profile_count
+  count = local.create_instance_profile_count
 
   name   = "access_policy"
   role   = aws_iam_role.ec2_role[0].id

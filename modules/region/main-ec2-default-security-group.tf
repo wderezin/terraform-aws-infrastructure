@@ -1,9 +1,11 @@
 
-resource aws_default_vpc default {}
+resource aws_default_vpc default {
+  count  = var.account_info.manage_default_security_group ? 1 : 0
+}
 
 resource aws_default_security_group default {
-  count = var.manage_default_security_group ? 1 : 0
-  vpc_id = aws_default_vpc.default.id
+  count  = var.account_info.manage_default_security_group ? 1 : 0
+  vpc_id = aws_default_vpc.default[0].id
 
   ingress {
     protocol  = -1

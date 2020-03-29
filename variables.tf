@@ -7,15 +7,15 @@ variable tags {
 
 variable default_region {
   type        = string
-  description = "Your default region where global resources are created."
+  description = "Your default region where global resources are created. This should be the same as the region set in the bootstrap module."
 }
 
 variable environment {
-  type = string
+  type        = string
   description = "Environment name such as dev, stage, qa, prod"
 }
 
 variable account_dns_zone_name {
-  type = string
+  type        = string
   description = "Override the default public DNS Zone Name for the AWS account"
 }

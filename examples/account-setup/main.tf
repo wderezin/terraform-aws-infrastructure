@@ -10,10 +10,10 @@ module account_infrastructure {
 }
 
 // Multi region
-module <REGION> {
+module us-east-2 {
   source       = "daringway/account-setup/aws//modules/region"
   providers = {
-    aws = aws.REGION
+    aws = aws.us-east-2
   }
   account_info = account_infrastructure.account_info
 }

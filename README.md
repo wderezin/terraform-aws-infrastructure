@@ -30,4 +30,6 @@ NOTE: This is currently under develop and should not be considered a stable
     $ terraform apply
     ```
 
+4) Register the DNS Nameservers.
+
 You now have bootstraped your environment and setup at least 1 regions.  

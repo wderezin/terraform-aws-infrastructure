@@ -20,3 +20,7 @@ locals {
 output account_info {
   value = local.account_info
 }
+
+output zone_name_servers {
+  value = aws_route53_zone.default.name_servers
+}

@@ -1,9 +1,4 @@
 
-resource aws_backup_vault default {
-  name        = "managed"
-  tags        = local.tags
-}
-
 resource "aws_iam_role" backup {
   name               = "backup"
   assume_role_policy = <<POLICY
@@ -27,30 +22,4 @@ resource aws_iam_role_policy_attachment backup {
   role       = aws_iam_role.backup.name
 }
 
-resource "aws_backup_selection" default {
-  iam_role_arn = aws_iam_role.backup.arn
-  name         = "default"
-  plan_id      = aws_backup_plan.default.id
 
-  selection_tag {
-    type  = "STRINGEQUALS"
-    key   = "backup"
-    value = "default"
-  }
-  selection_tag {
-    type  = "STRINGEQUALS"
-    key   = "backup"
-    value = "true"
-  }
-}
-
-resource aws_backup_plan default {
-  name = "default"
-  tags = local.tags
-
-  rule {
-    rule_name         = "default"
-    target_vault_name = aws_backup_vault.default.name
-//    schedule          = "cron(0 12 * * ? *)"
-  }
-}

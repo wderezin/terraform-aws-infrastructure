@@ -1,5 +1,5 @@
 # Terraform AWS Account Setup Module
-An opinionated AWS account setup with only options to adjust cost impacting setting.
+A Daring Way opinionated approach to how to setup an AWS account setup.
 
 NOTE: This is currently under develop and should not be considered a stable
 

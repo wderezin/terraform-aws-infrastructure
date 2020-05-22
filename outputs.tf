@@ -14,7 +14,6 @@ locals {
     default_region                = var.default_region,
     manage_default_security_group = var.manage_default_security_group,
     tags                          = local.tags,
-    backup_iam_arn = aws_iam_role.backup.arn
   }
 }
 

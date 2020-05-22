@@ -3,5 +3,6 @@ locals {
   tags = var.account_info.tags
   force_destroy = var.account_info.force_destroy
   manage_default_security_group = var.account_info.manage_default_security_group
-  backup_iam_arn = var.account_info.backup_iam_arn
-}
+
+  create_global_resources = local.current_region == var.account_info.default_region
+ }

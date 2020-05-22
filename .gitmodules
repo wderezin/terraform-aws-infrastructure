@@ -1,1 +1,4 @@
 
+[submodule "modules/managed-backups"]
+	path = modules/managed-backups
+	url = https://github.com/daringway/terraform-aws-managed-backups.git

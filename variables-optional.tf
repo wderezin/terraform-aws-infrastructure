@@ -22,4 +22,3 @@ variable create_default_instance_profile {
   default     = true
   description = "Create an Instance Profile for basic functionality"
 }
-

@@ -14,8 +14,3 @@ variable environment {
   type        = string
   description = "Environment name such as dev, stage, qa, prod"
 }
-
-variable account_dns_zone_name {
-  type        = string
-  description = "Default public DNS Zone Name for the AWS account"
-}

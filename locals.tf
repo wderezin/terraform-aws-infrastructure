@@ -18,6 +18,4 @@ locals {
 
   create_instance_profile_count = var.create_default_instance_profile ? 1 : 0
   instance_profile_name         = "default-ec2"
-
-  account_dns_zone_name = var.account_dns_zone_name
 }

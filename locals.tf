@@ -20,6 +20,4 @@ locals {
   instance_profile_name         = "default-ec2"
 
   account_dns_zone_name = var.account_dns_zone_name
-
-  acm_cert_domain = "*.${local.account_dns_zone_name}"
 }

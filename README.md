@@ -3,31 +3,40 @@ A [Daring Way](https://www/daringway.com/) opinionated approach to how to setup 
 
 # Quickstart Guide
 
+## Directory layout
+A suggested directory layout.
+
+```
+/terraform/aws/ENVIRONMENT/account-bootstrap
+/terraform/aws/ENVIRONMENT/account-setup
+```
+
+where ENVIRONMENT is something like:  dev, qa, nonprod, prod
+
+
 1) Bootstrap
 
     You will need to bootstrap your initial S3 and DynamoDB resources for storing/locking the terraform state files.
-    This will be the only tfstate files that are stored locally and not in S3.
-    Decided on your primary region.
+    
+    NOTE: It is recommended that your bootstrap tfstate files are stored in git. The rest of of your tfstate files will 
+    be be stored in the S3 bucket being created.
+    
+    Decided on your primary region.  If you are unsure then pick `us-east-1`
     
    See ./examples/account-bootstrap
     
     ```hcl-terraform
     $ terraform init
     $ terraform apply
+    $ git add terraform.tfstate
     ```
 
-2)
+2) Account setup
     In a setup directory configure your tf file like so.
     
    See ./examples/account-setup
-
-3) Finish setting up you primary region
     
     ```hcl-terraform
     $ terraform init
     $ terraform apply
     ```
-
-4) Register the DNS Nameservers.
-
-You now have bootstraped your environment and setup at least 1 regions.  

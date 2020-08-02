@@ -10,6 +10,6 @@ variable account_info {
 }
 
 variable region_name {
-  type = string
+  type        = string
   description = "Region name to set the provider to"
 }

@@ -1,6 +1,6 @@
 
 resource aws_default_vpc default {
-  count  = var.account_info.manage_default_security_group ? 1 : 0
+  count = var.account_info.manage_default_security_group ? 1 : 0
 }
 
 resource aws_default_security_group default {

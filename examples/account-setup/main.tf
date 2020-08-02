@@ -5,13 +5,13 @@ module global {
   providers = {
     aws = aws.us-east-1
   }
-  environment = "ENV"
+  environment           = "ENV"
   account_dns_zone_name = "DOMAIN"
 }
 
 // You must specify the default region here as well.
 module us-east-1 {
-  source       = "daringway/account-setup/aws//modules/region"
+  source = "daringway/account-setup/aws//modules/region"
   providers = {
     aws = aws.us-east-1
   }
@@ -19,7 +19,7 @@ module us-east-1 {
 }
 
 module us-east-2 {
-  source       = "daringway/account-setup/aws//modules/region"
+  source = "daringway/account-setup/aws//modules/region"
   providers = {
     aws = aws.us-east-2
   }

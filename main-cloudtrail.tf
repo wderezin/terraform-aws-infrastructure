@@ -12,6 +12,27 @@ resource aws_cloudtrail default {
 
   cloud_watch_logs_role_arn  = aws_iam_role.cloudtrail_cloudwatch.arn
   cloud_watch_logs_group_arn = aws_cloudwatch_log_group.cloudtrail.arn
+
+  event_selector {
+    read_write_type           = "All"
+    include_management_events = true
+
+    data_resource {
+      type   = "AWS::Lambda::Function"
+      values = ["arn:aws:lambda"]
+    }
+  }
+
+  event_selector {
+    read_write_type           = "All"
+    include_management_events = true
+
+    data_resource {
+      type   = "AWS::S3::Object"
+      values = ["arn:aws:s3:::"]
+    }
+  }
+
 }
 
 data aws_iam_policy_document cloudtrail_assume_role {

@@ -4,7 +4,7 @@ variable cloudtrail_cloudtrail_retention_days {
   description = "Number of days to retain cloudtrail logs in Cloudwatch"
 }
 
-variables role_path {
+variable role_path {
   type        = string
   default     = "/service-role/"
   description = "IAM role path"

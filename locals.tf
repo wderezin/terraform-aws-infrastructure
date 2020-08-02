@@ -10,8 +10,6 @@ locals {
   default_region = var.default_region
   force_destroy  = var.force_destroy
 
-  cloudwatch_role_name      = "CloudtrailToCloudwatchWriter"
-  cloudwatch_log_name       = "/aws/cloudtrail"
   cloudwatch_retention_days = var.cloudtrail_cloudtrail_retention_days
 
   role_path = "/service-role/"

@@ -30,7 +30,7 @@ resource aws_backup_plan default {
     schedule          = "cron(0 5 ? * * *)"
     lifecycle {
       cold_storage_after = 0
-      delete_after = 30
+      delete_after       = 30
     }
   }
 }

@@ -1,7 +1,5 @@
 # Terraform AWS Account Setup Module
-A Daring Way opinionated approach to how to setup an AWS account setup.
-
-NOTE: This is currently under develop and should not be considered a stable
+A [Daring Way](https://www/daringway.com/) opinionated approach to how to setup an AWS account setup.
 
 # Quickstart Guide
 

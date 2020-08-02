@@ -7,9 +7,11 @@ module global {
   }
   environment           = "ENV"
   account_dns_zone_name = "DOMAIN"
+  tags = {
+    TAG_NAME = "TAG_VALUE"
+  }
 }
 
-// You must specify the default region here as well.
 module us-east-1 {
   source = "daringway/account-setup/aws//modules/region"
   providers = {

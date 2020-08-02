@@ -8,3 +8,8 @@ variable account_info {
     default_region                = string
   })
 }
+
+variable region {
+  type = string
+  description = "Region name to set the provider to"
+}

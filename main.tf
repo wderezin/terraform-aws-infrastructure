@@ -11,3 +11,9 @@ module cloudtrail {
   log_bucket_name                      = module.log_bucket.bucket_name
   tags                                 = local.tags
 }
+
+module ec2 {
+  source = "./modules/ec2"
+
+  tags = local.tags
+}

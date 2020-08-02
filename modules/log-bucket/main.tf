@@ -4,6 +4,7 @@ resource "aws_s3_bucket" "logs" {
   bucket = "logs-${data.aws_caller_identity.current.account_id}"
 
   force_destroy = local.force_destroy
+  tags          = local.tags
 
   versioning {
     enabled = true

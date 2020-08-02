@@ -9,7 +9,7 @@ variable account_info {
   })
 }
 
-variable region {
+variable region_name {
   type = string
   description = "Region name to set the provider to"
 }

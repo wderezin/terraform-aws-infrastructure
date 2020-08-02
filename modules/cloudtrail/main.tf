@@ -1,13 +1,11 @@
 // These resources are only created in the primary region
 
 resource aws_cloudtrail default {
-  depends_on = [aws_s3_bucket_policy.log_policy_attachment]
-
   name                          = "DefaultTrail"
   include_global_service_events = true
   is_multi_region_trail         = true
 
-  s3_bucket_name             = aws_s3_bucket.logs.id
+  s3_bucket_name             = local.log_bucket_name
   enable_log_file_validation = true
 
   cloud_watch_logs_role_arn  = aws_iam_role.cloudtrail_cloudwatch.arn

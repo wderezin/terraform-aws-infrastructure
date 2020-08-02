@@ -4,6 +4,6 @@ variable tags {
 }
 
 variable log_bucket_name {
-  type = string
+  type        = string
   description = "Bucket to store cloudtrail logs"
 }

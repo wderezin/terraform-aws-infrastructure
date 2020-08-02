@@ -1,6 +1,6 @@
 resource aws_iam_instance_profile ec2_profile {
   name = "${local.instance_profile_name}-profile"
-  role = aws_iam_role.ec2_role[0].name
+  role = aws_iam_role.ec2_role.name
 }
 
 data aws_iam_policy_document ec2_assume_policy_document {
@@ -50,6 +50,6 @@ data aws_iam_policy_document ec2_access_policy_document {
 
 resource aws_iam_role_policy ec2_access_policy {
   name   = "access_policy"
-  role   = aws_iam_role.ec2_role[0].id
+  role   = aws_iam_role.ec2_role.id
   policy = data.aws_iam_policy_document.ec2_access_policy_document.json
 }

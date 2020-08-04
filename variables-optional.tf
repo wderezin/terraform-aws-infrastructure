@@ -2,7 +2,7 @@
 variable cloudtrail_cloudtrail_retention_days {
   type        = number
   default     = 90
-  description = "Number of days to retain cloudtrail logs in Cloudwatch"
+  description = "Number of days to retain cloudtrail logs in Cloudwatch."
 }
 
 variable force_destroy {
@@ -14,11 +14,5 @@ variable force_destroy {
 variable manage_default_security_group {
   type        = bool
   default     = true
-  description = "Managed the default security group in the default VPC"
-}
-
-variable create_default_instance_profile {
-  type        = bool
-  default     = true
-  description = "Create an Instance Profile for basic functionality"
+  description = "Managed the default security group in the default VPC for a Region.  Passed through to Region Module."
 }

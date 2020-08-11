@@ -1,6 +1,10 @@
 # Terraform AWS Account Setup Module
 A [Daring Way](https://www/daringway.com/) opinionated approach to how to setup an AWS account setup.
 
+    Contestant: I'll take AWS for $1000 Alex.
+    Alex: How do you easily setup AWS account with some best practices?
+    Contestant: What is the Daring Way AWS Account Setup Terraform Module
+
 # Quickstart Guide
 
 ## Directory layout
@@ -12,7 +16,6 @@ A suggested directory layout.
 ```
 
 where ENVIRONMENT is something like:  dev, qa, nonprod, prod
-
 
 1) Bootstrap
 
@@ -40,3 +43,17 @@ where ENVIRONMENT is something like:  dev, qa, nonprod, prod
     $ terraform init
     $ terraform apply
     ```
+
+NOTE: Support to enable/disable features and ability to configure regions in your account setup will be coming once terraform 13 is released.
+
+[Semantic Version](https://semver.org) is being applied to the modules. 
+
+1. MAJOR version requires a change. 
+    - upgrading to new version of terraform
+    - variable name changes
+    - new variable without a default value
+    - changes that will require manually updating the terraform.tfstate file such as a `terraform state mv`
+    - changes that will require resources being destroy and created that require external terraform application configuration
+2. MINOR version add new functionality in a backwards compatible manner
+    - new variable with default value
+3. PATCH version have backwards compatible bug fixes

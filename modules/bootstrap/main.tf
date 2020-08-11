@@ -2,7 +2,6 @@
 resource aws_s3_bucket state {
   bucket        = "tfstate-${data.aws_caller_identity.current.account_id}"
   force_destroy = local.force_destroy
-  region        = local.default_region
 
   versioning {
     enabled = true

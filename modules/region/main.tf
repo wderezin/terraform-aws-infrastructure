@@ -7,5 +7,5 @@ module managed_backups {
 
 module manage_default_security_group {
   source = "../region-default-security-group"
-  tags = local.tags
+  tags   = local.tags
 }

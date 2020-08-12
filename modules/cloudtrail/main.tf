@@ -9,7 +9,7 @@ resource aws_cloudtrail default {
   enable_log_file_validation = true
 
   cloud_watch_logs_role_arn  = aws_iam_role.cloudtrail_cloudwatch.arn
-  cloud_watch_logs_group_arn = aws_cloudwatch_log_group.cloudtrail.arn
+  cloud_watch_logs_group_arn = "${aws_cloudwatch_log_group.cloudtrail.arn}:*"
 
   event_selector {
     read_write_type           = "All"

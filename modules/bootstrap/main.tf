@@ -1,6 +1,6 @@
 
 resource aws_s3_bucket state {
-  bucket        = "tfstate-${data.aws_caller_identity.current.account_id}"
+  bucket        = local.bucket_name
   force_destroy = local.force_destroy
 
   versioning {

@@ -1,3 +1,7 @@
+data aws_caller_identity current {}
+
+data aws_region current {}
+
 locals {
   region_name                   = var.region_name
   tags                          = var.account_info.tags

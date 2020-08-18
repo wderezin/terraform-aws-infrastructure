@@ -10,7 +10,7 @@ module cloudtrail {
   count  = local.cloudtrail_ecount
   source = "./modules/cloudtrail"
 
-  cloudtrail_cloudtrail_retention_days = local.cloudtrail_cloudtrail_retention_days
+  cloudtrail_cloudtrail_retention_days = local.cloudtrail_retention_days
   log_bucket_name                      = module.log_bucket[0].bucket.bucket
   role_path                            = local.role_path
   tags                                 = local.tags

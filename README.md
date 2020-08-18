@@ -1,5 +1,5 @@
 # Terraform AWS Account Setup Module
-A [Daring Way](https://www/daringway.com/) opinionated approach to how to setup an AWS account setup.
+A [Daring Way](https://www/daringway.com/) opinionated approach to how to setup an AWS account.
 
     Contestant: I'll take AWS for $1000 Alex.
     Alex: How do you easily setup AWS account with some best practices?
@@ -17,18 +17,29 @@ A suggested directory layout.
 
 where ENVIRONMENT is something like:  dev, qa, nonprod, prod
 
-1) Bootstrap
+1) Bootstrap (optional)
 
     You will need to bootstrap your initial S3 and DynamoDB resources for storing/locking the terraform state files.
     
     NOTE: It is recommended that your bootstrap tfstate files are stored in git. The rest of of your tfstate files will 
     be be stored in the S3 bucket being created.
     
-    Decided on your primary region.  If you are unsure then pick `us-east-1`
+    Decided on your primary region.  If you are unsure then pick `us-east-1`.
     
-   See ./examples/account-bootstrap
+   Example tf files from [./examples/account-bootstrap](./examples/account-bootstrap)
+   ```hcl-terraform
+    module bootstrap {
+      source         = "daringway/account-setup/aws//modules/bootstrap"
+      default_region = "us-east-1"
+      tags = {
+        TAG_NAME = "TAG_VALUE"
+      }
+    }
+    ```
     
-    ```hcl-terraform
+    Once you have setup your tf file.
+    
+    ```shell script
     $ terraform init
     $ terraform apply
     $ git add terraform.tfstate
@@ -37,14 +48,43 @@ where ENVIRONMENT is something like:  dev, qa, nonprod, prod
 2) Account setup
     In a setup directory configure your tf file like so.
     
-   See ./examples/account-setup
+   Example tf file from [./examples/account-setup](./examples/account-setup)
+   ```hcl-terraform
+   terraform {
+     backend s3 {
+       region         = "DEFAULT_REGION"
+       bucket         = "tfstate-ACCOUNT_NUMBER"
+       key            = "GITREPO/PATH.tfstate"
+       dynamodb_table = "terraform-lock"
+     }
+   }
+   module global {
+     source                = "daringway/account-setup/aws"
+     tags = {
+       TAG_NAME = "TAG_VALUE"
+     }
+   }
     
-    ```hcl-terraform
+   provider aws {
+     alias  = "us-east-1"
+     region = "us-east-1"
+   }
+   module us-east-1 {
+     source       = "daringway/account-setup/aws//modules/region"
+    
+     globals = module.global
+     providers = {
+       aws = aws.us-east-1
+     }
+   }
+   ```
+    
+    Once you have setup your tf files to configure you global and regions.
+    
+    ```shell script
     $ terraform init
     $ terraform apply
     ```
-
-NOTE: Support to enable/disable features and ability to configure regions in your account setup will be coming once terraform 13 is released.
 
 [Semantic Version](https://semver.org) is being applied to the modules. 
 

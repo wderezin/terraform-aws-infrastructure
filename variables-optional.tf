@@ -5,19 +5,13 @@ variable tags {
   default     = {}
 }
 
-variable default_region {
-  type        = string
-  default     = null
-  description = "Your default region where global resources are created. This should be the same as the region set in the bootstrap module."
-}
-
 variable enable_cloudtrail {
   type        = bool
   default     = true
-  description = "Enable cloudtrail configurtion.  enable_log_bucket must also be true."
+  description = "Enable cloudtrail configuration. enable_log_bucket must also be true."
 }
 
-variable cloudtrail_cloudtrail_retention_days {
+variable cloudtrail_retention_days {
   type        = number
   default     = 90
   description = "Number of days to retain cloudtrail logs in Cloudwatch."
@@ -26,7 +20,7 @@ variable cloudtrail_cloudtrail_retention_days {
 variable enable_ec2 {
   type        = bool
   default     = true
-  description = "Enable EC2 setup."
+  description = "Enable EC2 configuration."
 }
 
 variable enable_log_bucket {
@@ -44,11 +38,11 @@ variable force_destroy {
 variable manage_default_security_group {
   type        = bool
   default     = true
-  description = "Managed the default security group in the default VPC for a Region.  Passed through to Region Module."
+  description = "Managed the default security group in the default VPC for a Region."
 }
 
 variable enable_managed_backups {
   type        = bool
   default     = true
-  description = "Setup EC2 Managed Backup Policies"
+  description = "Setup EC2 Managed Backup Policies."
 }

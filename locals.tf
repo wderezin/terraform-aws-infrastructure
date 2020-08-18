@@ -9,7 +9,7 @@ locals {
     var.tags
   )
 
-//  ecount variables make it easy to specify count for resources/modules
+  //  ecount variables make it easy to specify count for resources/modules
   ec2_ecount                           = var.enable_ec2 ? 1 : 0
   log_bucket_ecount                    = var.enable_log_bucket ? 1 : 0
   cloudtrail_ecount                    = var.enable_cloudtrail && var.enable_log_bucket ? 1 : 0

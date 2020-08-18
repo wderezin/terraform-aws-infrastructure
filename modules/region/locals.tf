@@ -3,10 +3,6 @@ data aws_caller_identity current {}
 data aws_region current {}
 
 locals {
-  region_name                   = var.region_name
-  tags                          = var.account_info.tags
-  force_destroy                 = var.account_info.force_destroy
-  manage_default_security_group = var.account_info.manage_default_security_group
+  globals = var.globals
 
-  create_global_resources = local.region_name == var.account_info.default_region
 }

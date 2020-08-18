@@ -1,15 +1,10 @@
 
-variable account_info {
+variable globals {
   description = "This is output from the root module"
   type = object({
-    tags                          = map(string),
-    force_destroy                 = bool,
-    manage_default_security_group = bool,
-    default_region                = string
+    tags                                 = map(string),
+    force_destroy                        = bool,
+    manage_default_security_group_ecount = number,
+    managed_backups_ecount               = number
   })
-}
-
-variable region_name {
-  type        = string
-  description = "Region name to set the provider to"
 }

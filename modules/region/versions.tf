@@ -1,8 +1,4 @@
 
-provider aws {
-  region = local.region_name
-}
-
 terraform {
   required_providers {
     aws = {

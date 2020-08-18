@@ -3,7 +3,6 @@ resource aws_backup_vault managed {
   tags = local.tags
 }
 resource "aws_backup_selection" default {
-  depends_on   = [aws_iam_role.backup]
   iam_role_arn = local.backup_iam_arn
   name         = "default"
   plan_id      = aws_backup_plan.default.id

@@ -1,11 +1,15 @@
 
+
 module managed_backups {
-  source                  = "../region-managed-backups"
-  tags                    = local.tags
-  create_global_resources = local.create_global_resources
+  count  = local.globals.managed_backups_ecount
+  source = "../region-default-security-group"
+
+  tags = local.globals.tags
 }
 
-module manage_default_security_group {
+module default-security-group {
+  count  = local.globals.manage_default_security_group_ecount
   source = "../region-default-security-group"
-  tags   = local.tags
+
+  tags = local.globals.tags
 }

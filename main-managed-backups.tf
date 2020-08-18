@@ -1,6 +1,6 @@
 
 resource "aws_iam_role" backup {
-  count              = local.create_global_count
+  count              = local.managed_backups_ecount
   name               = "backup"
   assume_role_policy = <<POLICY
 {
@@ -19,9 +19,7 @@ POLICY
 }
 
 resource aws_iam_role_policy_attachment backup {
-  count      = local.create_global_count
+  count      = local.managed_backups_ecount
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSBackupServiceRolePolicyForBackup"
   role       = aws_iam_role.backup[0].name
 }
-
-

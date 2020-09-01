@@ -5,7 +5,7 @@ variable tags {
   default     = {}
 }
 
-variable enable_cloudtrail {
+variable cloudtrail_enabled {
   type        = bool
   default     = true
   description = "Enable cloudtrail configuration. enable_log_bucket must also be true."
@@ -17,13 +17,13 @@ variable cloudtrail_retention_days {
   description = "Number of days to retain cloudtrail logs in Cloudwatch."
 }
 
-variable enable_ec2 {
+variable ec2_enabled {
   type        = bool
   default     = true
   description = "Enable EC2 configuration."
 }
 
-variable enable_log_bucket {
+variable log_bucket_enabled {
   type        = bool
   default     = true
   description = "Enable S3 Log Bucket. Must be enabled for cloudtrails"
@@ -35,13 +35,13 @@ variable force_destroy {
   default     = false
 }
 
-variable manage_default_security_group {
+variable default_security_group_managed {
   type        = bool
   default     = true
   description = "Managed the default security group in the default VPC for a Region."
 }
 
-variable enable_managed_backups {
+variable managed_backups_enabled {
   type        = bool
   default     = true
   description = "Setup EC2 Managed Backup Policies."

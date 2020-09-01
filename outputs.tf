@@ -20,5 +20,5 @@ output force_destroy {
 }
 
 output manage_default_security_group_ecount {
-  value = local.manage_default_security_group_ecount
+  value = local.default_security_group_ecount
 }

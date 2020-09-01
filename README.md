@@ -1,5 +1,5 @@
-# Terraform AWS Account Setup Module
-A [Daring Way](https://www/daringway.com/) opinionated approach that you can selectively tell to be quite on how to setup an AWS account.
+# Terraform AWS Infrastructure Module
+A [Daring Way](https://www/daringway.com/) opinionated approach to how to setup an AWS account.
 
     Contestant: I'll take AWS for $1000 Alex.
     Alex: How do you easily setup AWS account with some best practices?
@@ -19,13 +19,12 @@ enabled by default (the opinionated part) each one can be turned off (telling it
 A suggested directory layout.
 
 ```
-/terraform/aws/ENVIRONMENT/account-bootstrap
-/terraform/aws/ENVIRONMENT/account-setup
+/terraform/aws/ENVIRONMENT/infrastructure
 ```
 
 where ENVIRONMENT is something like:  dev, qa, nonprod, prod
 
-1) Bootstrap (optional)
+1) Bootstrap the backend (optional)
 
     You will need to bootstrap your initial S3 and DynamoDB resources for storing/locking the terraform state files.
     
@@ -34,11 +33,11 @@ where ENVIRONMENT is something like:  dev, qa, nonprod, prod
     
     Decided on your primary region.  If you are unsure then pick `us-east-1`.
     
-   Example terraform.  See [./examples/account-bootstrap](./examples/account-bootstrap) for complete details
-   
+   Example tf files from [./examples/infrastructure-step1](examples/infrastracture-step1)
+
    ```hcl-terraform
     module bootstrap {
-      source         = "daringway/account-setup/aws//modules/bootstrap"
+      source         = "daringway/infrastructure/aws//modules/backend"
       default_region = "us-east-1"
       tags = {
         TAG_NAME = "TAG_VALUE"
@@ -69,23 +68,24 @@ where ENVIRONMENT is something like:  dev, qa, nonprod, prod
     terraform handles provider blocks in modules you will have a module for your global and a module for each 
     region you want to setup.
     
-   In a setup directory configure your tf files like so.  See [./examples/account-setup](./examples/account-setup) for 
-   a complete example.  See [./examples/account-setup-detailed](./examples/account-setup-detailed) on how to enable/disable 
-   sections and override defaults.
-   
+
+   Example tf file from [./examples/infrastructure-step2(examples/infrastructure-step2)
    ```hcl-terraform
    module global {
-     source = "daringway/account-setup/aws"
+     source                = "daringway/infrastructure-step2/aws"
      tags = {
        TAG_NAME = "TAG_VALUE"
      }
    }
    ```
     
-3) Region Setting
 
-    For each region you are going to deploy resources you need to config a provider block and module.   Note, this is 
-    needed to avoid having the provider block definitions inside the module.
+   provider aws {
+     alias  = "us-east-1"
+     region = "us-east-1"
+   }
+   module us-east-1 {
+     source       = "daringway/infrastructure/aws//modules/region"
     
     This is a complete region configuration.  If you need to make setting changes to a region they are specified in the 
     global module and are passed to the region module with the `globals` variable, see [./examples/account-setup-detailed](./examples/account-setup-detailed).  This is done for two 

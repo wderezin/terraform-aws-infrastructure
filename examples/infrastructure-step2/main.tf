@@ -1,6 +1,9 @@
+provider aws {
+  region = "us-east-1"
+}
 
 module global {
-  source = "daringway/account-setup/aws"
+  source = "daringway/infrastructure/aws"
   tags = {
     TAG_NAME = "TAG_VALUE"
   }
@@ -11,7 +14,7 @@ provider aws {
   region = "us-east-1"
 }
 module us-east-1 {
-  source = "daringway/account-setup/aws//modules/region"
+  source = "daringway/infrastructure/aws//modules/region"
 
   globals = module.global
   providers = {
@@ -24,7 +27,7 @@ provider aws {
   region = "us-west-1"
 }
 module us-west-1 {
-  source = "daringway/account-setup/aws//modules/region"
+  source = "daringway/infrastructure/aws//modules/region"
 
   globals = module.global
   providers = {

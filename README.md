@@ -1,4 +1,4 @@
-# Terraform AWS Account Setup Module
+# Terraform AWS Infrastructure Module
 A [Daring Way](https://www/daringway.com/) opinionated approach to how to setup an AWS account.
 
     Contestant: I'll take AWS for $1000 Alex.
@@ -11,13 +11,12 @@ A [Daring Way](https://www/daringway.com/) opinionated approach to how to setup 
 A suggested directory layout.
 
 ```
-/terraform/aws/ENVIRONMENT/account-bootstrap
-/terraform/aws/ENVIRONMENT/account-setup
+/terraform/aws/ENVIRONMENT/infrastructure
 ```
 
 where ENVIRONMENT is something like:  dev, qa, nonprod, prod
 
-1) Bootstrap (optional)
+1) Bootstrap the backend (optional)
 
     You will need to bootstrap your initial S3 and DynamoDB resources for storing/locking the terraform state files.
     
@@ -26,10 +25,10 @@ where ENVIRONMENT is something like:  dev, qa, nonprod, prod
     
     Decided on your primary region.  If you are unsure then pick `us-east-1`.
     
-   Example tf files from [./examples/account-bootstrap](./examples/account-bootstrap)
+   Example tf files from [./examples/infrastructure-step1](examples/infrastracture-step1)
    ```hcl-terraform
     module bootstrap {
-      source         = "daringway/account-setup/aws//modules/backend"
+      source         = "daringway/infrastructure/aws//modules/backend"
       default_region = "us-east-1"
       tags = {
         TAG_NAME = "TAG_VALUE"
@@ -48,7 +47,7 @@ where ENVIRONMENT is something like:  dev, qa, nonprod, prod
 2) Account setup
     In a setup directory configure your tf file like so.
     
-   Example tf file from [./examples/account-setup](./examples/account-setup)
+   Example tf file from [./examples/infrastructure-step2(examples/infrastructure-step2)
    ```hcl-terraform
    terraform {
      backend s3 {
@@ -59,7 +58,7 @@ where ENVIRONMENT is something like:  dev, qa, nonprod, prod
      }
    }
    module global {
-     source                = "daringway/account-setup/aws"
+     source                = "daringway/infrastructure-step2/aws"
      tags = {
        TAG_NAME = "TAG_VALUE"
      }
@@ -70,7 +69,7 @@ where ENVIRONMENT is something like:  dev, qa, nonprod, prod
      region = "us-east-1"
    }
    module us-east-1 {
-     source       = "daringway/account-setup/aws//modules/region"
+     source       = "daringway/infrastructure/aws//modules/region"
     
      globals = module.global
      providers = {

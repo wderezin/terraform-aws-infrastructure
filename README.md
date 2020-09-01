@@ -29,7 +29,7 @@ where ENVIRONMENT is something like:  dev, qa, nonprod, prod
    Example tf files from [./examples/account-bootstrap](./examples/account-bootstrap)
    ```hcl-terraform
     module bootstrap {
-      source         = "daringway/account-setup/aws//modules/bootstrap"
+      source         = "daringway/account-setup/aws//modules/backend"
       default_region = "us-east-1"
       tags = {
         TAG_NAME = "TAG_VALUE"

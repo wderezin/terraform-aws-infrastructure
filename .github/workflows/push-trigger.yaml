@@ -1,1 +1,15 @@
+name: Push trigger for aws-integration
+on: push
 
+jobs:
+  build:
+    name: Dispatch to `aws-integration`
+    runs-on: ubuntu-latest
+    steps:
+      - name: Emit repository_dispatch
+        uses: mvasigh/dispatch-action@main
+        with:
+          # You should create a personal access token and store it in your repository
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          repo: aws-integration
+          event_type: sample_push

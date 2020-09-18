@@ -12,4 +12,4 @@ jobs:
           # You should create a personal access token and store it in your repository
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           repo: aws-integration
-          event_type: sample_push
+          event_type: push_trigger

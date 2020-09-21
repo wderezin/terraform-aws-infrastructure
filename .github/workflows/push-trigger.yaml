@@ -17,4 +17,3 @@ jobs:
           repo: aws-integration
           owner: daringway
           event_type: push_trigger
-          

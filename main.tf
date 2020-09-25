@@ -22,3 +22,4 @@ module ec2 {
 
   tags = local.tags
 }
+

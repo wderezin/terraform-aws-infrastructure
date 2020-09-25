@@ -1,19 +1,18 @@
 name: Push trigger for aws-integration
 on:
-  push:
+  pull_request:
     branches:
-      - integration
+      - master
 
 jobs:
   build:
     name: Dispatch to `aws-integration`
     runs-on: ubuntu-latest
     steps:
-      - name: Emit repository_dispatch
-        uses: mvasigh/dispatch-action@master
+      - name: aws-integration
+        uses: convictional/trigger-workflow-and-wait
         with:
-          # You should create a personal access token and store it in your repository
-          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          repo: aws-integration
           owner: daringway
+          repo: aws-integration
+          github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           event_type: push_trigger

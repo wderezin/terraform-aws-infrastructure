@@ -9,12 +9,6 @@ jobs:
     name: Dispatch to `aws-integration`
     runs-on: ubuntu-latest
     steps:
-      - name: Tag Repo Integration
-        uses: richardsimko/update-tag@master
-        with:
-          tag_name: integration
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: aws-integration
         uses: convictional/trigger-workflow-and-wait@v1.0.1
         with:

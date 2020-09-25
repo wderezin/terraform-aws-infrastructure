@@ -20,5 +20,5 @@ module ec2 {
   count  = local.ec2_ecount
   source = "./modules/ec2"
 
-  tags = xxlocal.tags
+  tags = local.tags
 }

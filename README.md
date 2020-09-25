@@ -11,8 +11,6 @@ This is designed to configure an AWS account for use with such things as a
 logging bucket, cloud trails, managed backup policies, etc.  Though each option is 
 enabled by default (the opinionated part) each one can be turned off (telling it to be quite part.)
 
-
-
 # Quickstart Guide
 
 ## Directory layout

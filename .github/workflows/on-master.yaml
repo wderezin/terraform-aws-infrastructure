@@ -2,11 +2,12 @@ name: Push trigger for aws-integration
 on:
   pull_request:
     branches:
-      - integration
+      - master
 
 jobs:
   build:
-    name: Dispatch to `aws-integration`
+    id: dispatch-apply
+    name: Dispatch to `aws-integration` for apply
     runs-on: ubuntu-latest
     steps:
       - name: aws-integration
@@ -15,4 +16,4 @@ jobs:
           owner: daringway
           repo: aws-integration
           github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          event_type: module_plan
+          event_type: module_apply

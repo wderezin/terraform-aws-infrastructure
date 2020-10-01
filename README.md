@@ -1,5 +1,5 @@
 # Terraform AWS Infrastructure Module
-A [Daring Way](https://www/daringway.com/) opinionated approach to how to setup an AWS account.
+A [Daring Way](https://www.daringway.com/) opinionated approach to how to setup an AWS account.
 
     Contestant: I'll take AWS for $1000 Alex.
     Alex: How do you easily setup AWS account with some best practices?

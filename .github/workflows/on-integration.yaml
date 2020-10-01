@@ -18,3 +18,4 @@ jobs:
           github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           event_type: module_plan
           client_payload: '{"DISPATCHER-REPO": "${{ github.repository }}", "DISPATCHER-BRANCH": "${{ github.ref }}" }'
+

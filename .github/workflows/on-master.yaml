@@ -16,4 +16,3 @@ jobs:
           repo: aws-integration
           github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           event_type: module_apply
-

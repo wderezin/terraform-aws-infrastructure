@@ -9,7 +9,7 @@ jobs:
     name: Dispatch to `aws-integration` to plan
     runs-on: ubuntu-latest
     steps:
-      - name: aws-integration
+      - name: aws-integration-plan
         uses: convictional/trigger-workflow-and-wait@v1.0.1
         with:
           owner: daringway

@@ -9,6 +9,10 @@ jobs:
     name: Dispatch to `aws-integration` to plan
     runs-on: ubuntu-latest
     steps:
+      - name: Dump Context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
       - name: aws-integration-plan
 #        uses: convictional/trigger-workflow-and-wait@v1.0.1
         uses: daringway/trigger-workflow-and-wait@add-client-payload

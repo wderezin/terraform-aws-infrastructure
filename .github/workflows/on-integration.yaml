@@ -6,7 +6,6 @@ on:
 
 jobs:
   build:
-    id: dispatch-plan
     name: Dispatch to `aws-integration` to plan
     runs-on: ubuntu-latest
     steps:

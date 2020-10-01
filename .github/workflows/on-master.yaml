@@ -6,7 +6,6 @@ on:
 
 jobs:
   build:
-    id: dispatch-apply
     name: Dispatch to `aws-integration` for apply
     runs-on: ubuntu-latest
     steps:

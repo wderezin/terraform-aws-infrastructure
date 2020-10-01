@@ -15,4 +15,4 @@ jobs:
           owner: daringway
           repo: aws-integration
           github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          event_type: push_trigger
+          event_type: module_apply

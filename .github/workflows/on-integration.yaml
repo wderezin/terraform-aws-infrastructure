@@ -1,4 +1,4 @@
-name: Push trigger for aws-integration
+name: Remote terraform plan for aws-integration
 on:
   pull_request:
     branches:

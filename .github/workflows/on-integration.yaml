@@ -9,6 +9,10 @@ jobs:
     name: Dispatch to `aws-integration` to plan
     runs-on: ubuntu-latest
     steps:
+      - name: Dump Context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
       - name: aws-integration-plan
 #        uses: convictional/trigger-workflow-and-wait@v1.0.1
         uses: daringway/trigger-workflow-and-wait@add-client-payload
@@ -17,5 +21,4 @@ jobs:
           repo: aws-integration
           github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           event_type: module_plan
-          client_payload: '{"DISPATCHER-REPO": "${{ github.repository }}", "DISPATCHER-BRANCH": "${{ github.ref }}" }'
-
+          client_payload: '{"dispatcher_repo": "${{ github.repository }}", "dispatcher_branch": "${{ github.head_ref }}" }'

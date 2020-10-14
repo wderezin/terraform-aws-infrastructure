@@ -23,15 +23,3 @@ jobs:
           github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           event_type: module_plan
           client_payload: '{"dispatcher_repo": "${{ github.repository }}", "dispatcher_branch": "${{ github.head_ref }}" }'
-
-      - name: Download PLAN artifact
-        # Returns true when none of the previous steps have failed or been canceled.
-        if: ${{ success() }}
-        uses: actions/download-artifact@v2
-        with:
-          name: terraform-output
-
-      - name: List dir and show pwd (debugging info)
-        run: |
-          ls -alrt
-          pwd

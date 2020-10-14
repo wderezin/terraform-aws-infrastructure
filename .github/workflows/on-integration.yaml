@@ -13,6 +13,7 @@ jobs:
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
+
       - name: aws-integration-plan
 #        uses: convictional/trigger-workflow-and-wait@v1.0.1
         uses: daringway/trigger-workflow-and-wait@master
@@ -23,3 +24,14 @@ jobs:
           event_type: module_plan
           client_payload: '{"dispatcher_repo": "${{ github.repository }}", "dispatcher_branch": "${{ github.head_ref }}" }'
 
+      - name: Download PLAN artifact
+        # Returns true when none of the previous steps have failed or been canceled.
+        if: ${{ success() }}
+        uses: actions/download-artifact@v2
+        with:
+          name: terraform-output
+
+      - name: List dir and show pwd (debugging info)
+        run: |
+          ls -alrt
+          pwd

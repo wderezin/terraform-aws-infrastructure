@@ -11,7 +11,8 @@ jobs:
     steps:
       - name: Dump Context
         env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
+          GITHUB_CONTEXT: ${{ toJson(github) }}env:
+          GITHUB_TOKEN: ${{ github.token }}
         run: echo "$GITHUB_CONTEXT"
 
       - name: aws-integration-plan

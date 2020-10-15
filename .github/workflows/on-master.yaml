@@ -8,9 +8,11 @@ jobs:
   build:
     name: Dispatch to `aws-integration` for apply
     runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ github.token }}
     steps:
       - name: aws-integration-apply
-        uses: convictional/trigger-workflow-and-wait@v1.0.1
+        uses: daringway/trigger-workflow-and-wait@master
         with:
           owner: daringway
           repo: aws-integration

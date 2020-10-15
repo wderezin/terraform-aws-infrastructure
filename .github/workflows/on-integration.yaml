@@ -18,7 +18,7 @@ jobs:
 
       - name: aws-integration-plan
 #        uses: convictional/trigger-workflow-and-wait@v1.0.1
-        uses: daringway/trigger-workflow-and-wait@comments
+        uses: daringway/trigger-workflow-and-wait@master
         with:
           owner: daringway
           repo: aws-integration

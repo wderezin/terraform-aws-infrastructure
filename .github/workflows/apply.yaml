@@ -1,0 +1,28 @@
+name: Remote terraform plan for aws-integration
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: Dispatch to `aws-integration` to plan
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ github.token }}
+    steps:
+      - name: Dump Context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+      - name: aws-integration-plan
+#        uses: convictional/trigger-workflow-and-wait@v1.0.1
+        uses: daringway/trigger-workflow-and-wait@master
+        with:
+          owner: daringway
+          repo: aws-integration
+          github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          event_type: module_plan
+          client_payload: '{"dispatcher_repo": "${{ github.repository }}", "dispatcher_branch": "${{ github.head_ref }}" }'
+

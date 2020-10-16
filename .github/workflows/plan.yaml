@@ -1,6 +1,6 @@
 name: Remote terraform apply for aws-integration
 on:
-  pull_request:
+  push:
     branches:
       - master
 

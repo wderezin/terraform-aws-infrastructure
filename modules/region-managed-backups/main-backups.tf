@@ -12,11 +12,6 @@ resource "aws_backup_selection" default {
     key   = "backup"
     value = "default"
   }
-  selection_tag {
-    type  = "STRINGEQUALS"
-    key   = "backup"
-    value = "true"
-  }
 }
 
 resource aws_backup_plan default {
